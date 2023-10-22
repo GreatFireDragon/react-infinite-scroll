@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "serve": "json-server --watch .\\src\\data\\quotes.json --port 3001 --delay 200",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

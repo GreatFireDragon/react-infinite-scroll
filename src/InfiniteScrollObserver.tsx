@@ -6,7 +6,7 @@ type itemsType = {
   quote: string;
 };
 
-const HEAP_SIZE = 10;
+const HEAP_SIZE = 5;
 
 function InfiniteScrollObserver() {
   const [items, setItems] = useState<itemsType[]>([]);
@@ -56,26 +56,23 @@ function InfiniteScrollObserver() {
       { threshold: 1 }
     );
 
-    if (observerTarget.current) {
-      observer.observe(observerTarget.current);
-    }
+    if (observerTarget.current) observer.observe(observerTarget.current);
 
+    const observerConst = observerTarget.current;
     return () => {
-      if (observerTarget.current) {
-        observer.unobserve(observerTarget.current);
-      }
+      if (observerConst) observer.unobserve(observerConst);
     };
   }, [observerTarget]);
 
   // RENDER
   return (
     <div className="bg-yellow-100">
-      <h1 className="bg-lime-200">Heading</h1>
-      <ul>
+      <h1 className="pl-2 text-xl font-bold bg-lime-200">Heading</h1>
+      <ul className="ml-2">
         {items.map((item) => (
-          <li key={item.id}>
-            <h2>{item.name}</h2>
-            <p>{item.quote}</p>
+          <li key={item.id} className="mb-1 bg-yellow-200 border border-dashed border-lime-300">
+            <h2 className="text-lg font-bold uppercase">{item.name}</h2>
+            <p className="capitalize">{item.quote}</p>
           </li>
         ))}
       </ul>
