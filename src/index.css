@@ -2,9 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+@layer components {
+  .input {
+    @apply flex-grow px-2 py-1 text-sm font-semibold text-yellow-600 uppercase transition-all duration-300 border rounded-full border-stone-200 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-opacity-50 md:px-4 md:py-2 md:text-base md:min-w-[720px] flex-shrink-0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: theme("colors.amber.50");
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
 }
